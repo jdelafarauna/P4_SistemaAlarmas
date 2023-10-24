@@ -34,4 +34,7 @@ public class Casa{
             this.sensores[i].Activar_Desactivar();
         }
     }
+    public void añadirEvento(TipoEvento evento,String mensaje){
+        this.sensores.Aña
+    }
 }
