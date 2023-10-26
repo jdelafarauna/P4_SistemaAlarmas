@@ -1,23 +1,22 @@
+import java.util.ArrayList;
+
 public class Sensor {
 
 
     private int id;
-    private boolean activado;
+    private boolean estado;
     private Camara camara;
-    private Evento evento;
 
-    public Sensor(int id, String ip,boolean activado) {
+    public Sensor(int id, String ip, boolean estado) {
+
         Camara camara = new Camara(ip);
         this.id = id;
-        this.activado = activado;
-    }
-    public void Activar_Desactivar(){
-        this.activado = !this.activado;
+        this.estado = estado;
     }
 
-    public void AñadirEvento(TipoEvento evento,String mensaje ) {
 
-        this.evento.Mensaje();
-
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
+
 }

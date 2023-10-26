@@ -1,40 +1,52 @@
+import java.util.ArrayList;
+
 public class Casa{
 
     private boolean sensoresActivados;
-    private Sensor sensores[];
+    ArrayList<Sensor> sensores;
+    ArrayList<Evento> evento;
 
-    private int numsensores;
 
 
     public Casa() {
        this.sensoresActivados = false;
-       this.numsensores = 0;
+
     }
     public boolean SensorDuplicado(int id) {
 
-        if (this.numsensores > id) {
+        if (sensores.size() > id) {
             return true;
         } else{
             return false;
         }
     }
     public void AñadirSensor(int id, String ip){
-        this.numsensores += 1;
-        if (!(this.SensorDuplicado(id))){
-            sensores[id] = new Sensor(id, ip, false);
-            System.out.println("Sensor " + id + " añadido correctamente.");
-        }else{
+
+        if (this.SensorDuplicado(id)){
+            sensores.add(new Sensor(id,ip,false));
+            System.out.println("Sensor "+ id + " correctamente.");
+        }else {
             System.out.println("Sensor " + id + " duplicado.");
         }
 
     }
 
-    public void CambiarEstadoAlarma(){
-        for (int i = 1; i<this.numsensores ;i++ ){
-            this.sensores[i].Activar_Desactivar();
+    public void CambiarEstadoAlarma(boolean estado){
+
+        for (Sensor sensor: sensores){
+
+            sensor.setEstado(estado);
         }
+
     }
-    public void añadirEvento(TipoEvento evento,String mensaje){
-        this.sensores.Aña
+
+
+    public Casa(ArrayList<Evento> evento) {
+        this.evento = evento;
+    }
+
+    public void añadirEvento(TipoEvento evento, String mensaje){
+        Evento aux = new Evento(evento,mensaje);
+        this.evento.add(aux);
     }
 }
